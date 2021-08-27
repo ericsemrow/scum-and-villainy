@@ -1,20 +1,19 @@
-import discord
 from src.uses_dice import UsesDice
-class Action(UsesDice):
-  description = None
+class Resistance(UsesDice):
   roll_result = {
-    1: "Bad outcome",
-    2: "Bad outcome",
-    3: "Bad outcome",
-    4: "Success with complications",
-    5: "Success with complications",
-    6: "Success",
-    7: "Crit!"
+    1: "Ouch. Mark 5 stress.",
+    2: "Mark 4 stress.",
+    3: "Mark 3 stress.",
+    4: "Mark 2 stress.",
+    5: "Mark 1 stress.",
+    6: "No stress at all.",
+    7: "Crit! Clear one stress."
   }
 
- 
+  
   def getRoll(self):
     result = self.roll()
+    stress_cost = 6 - result.total
     msg = self.roll_result[result.total]
     # if 6 check for crit
     if( result.total == 6 and self.num_die != 0 ):

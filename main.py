@@ -1,8 +1,8 @@
-import discord
 import os
 import keepalive
 import d20
 from src.start_actions import start_actions
+from src.start_resistances import start_resistances
 
 #from replit import db
 from discord.ext import commands
@@ -15,6 +15,7 @@ async def is_ready():
     print("Online")
 
 start_actions(bot)
+start_resistances(bot)
 
 
 
