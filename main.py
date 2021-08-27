@@ -21,6 +21,7 @@ start_actions(bot)
 @bot.command()
 async def roll(ctx, *, arg):
   await ctx.send(str(d20.roll(arg)))
+  
 @bot.command()
 async def r(ctx, *, arg):
   await ctx.send(str(d20.roll(arg)))
