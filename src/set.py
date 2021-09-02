@@ -30,7 +30,6 @@ class SetFields:
       if str(value).lower() in self.actions:
         self.action = value.capitalize()
       elif value.startswith("<@!"):
-        print( "user match found")
         self.user = value
       elif str(value)[0] in self.positions.keys():
         self.position = self.positions[str(value)[0]]
@@ -46,9 +45,7 @@ class SetRoll():
   fields = None
 
   def __init__(self, args):
-    print(args)
     self.fields = SetFields(args)
-    print (self.fields)
 
   def fillStr(self, value):
     value = value.replace("{user}", self.fields.user)

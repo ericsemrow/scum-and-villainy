@@ -16,36 +16,43 @@ def start_actions(bot):
   @bot.command()
   async def attune(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Attune(die).getEmbed(ctx))
 
   @bot.command()
   async def command(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Command(die).getEmbed(ctx))
 
   @bot.command()
   async def consort(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Consort(die).getEmbed(ctx))
 
   @bot.command()
   async def doctor(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Doctor(die).getEmbed(ctx))
 
   @bot.command()
   async def hack(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Hack(die).getEmbed(ctx))
 
   @bot.command()
   async def helm(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Helm(die).getEmbed(ctx))
 
   @bot.command()
   async def rig(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Rig(die).getEmbed(ctx))
 
   @bot.command()
