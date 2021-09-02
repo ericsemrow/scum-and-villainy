@@ -1,0 +1,18 @@
+{ 
+  "desc": "When your PC suffers a consequence that you don’t like, you can choose to resist it. Just tell the GM, \"No, I don’t think so. I’m resisting that.\" Resistance is always automatically effective—the GM says if the consequence is reduced in severity or if you avoid it entirely. Make a resistance roll to see how much stress your character suffers as a result of their resistance.\n\nYou make the roll using one of your character’s attributes (**insight**, **prowess**, or **resolve**). The GM chooses the attribute, based on the nature of consequence:\n\n> **insight**: Consequences from deception or understanding.\n> **prowess**: Consequences from physical strain or injury.\n> **resolve**: Consequences from mental strain or willpower.\n\nYour character suffers **6 stress** when they resist, minus the highest die result from the resistance roll. So, if you rolled a **4**, you’d suffer **2 stress**. If you rolled a **6**, you’d suffer **0 stress**. If you get a critical result, you also **clear 1 stress**.",
+  
+  "insight": {
+    "name": "Insight",
+    "desc": "You resist the consequences from deception or understanding."
+  },
+
+  "prowess": {
+    "name": "Prowess",
+    "desc": "You resist the consequences from physical strain or injury."
+  },
+
+  "resolve": {
+    "name": "resolve",
+    "desc": "You resist the consequences from mental strain or willpower."
+  }
+}

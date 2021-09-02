@@ -6,7 +6,7 @@ import discord
 class SetFields:
   user: str = ""
   title: str = "Setting {action} Position and Effect"
-  description: str = "Custom build for {user}"
+  description: str = "Custom built for {user}"
   footer: str = "To search for XP use \"mentions:{user} desperate\""
   reminder: str = "{user}, don't forget to mark XP for that desperate {action} roll."
   position: str = ""

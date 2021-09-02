@@ -1,0 +1,58 @@
+{ 
+  "desc": "You make an action roll when your character does something potentially dangerous or troublesome. The possible results of the action roll depend on your character’s position. There are three positions: **controlled**, **risky**, and **desperate**. If you’re in a **controlled** position, the possible consequences are less serious. If you’re in a **desperate** position, the consequences can be severe. If you’re somewhere in-between, it’s **risky** - usually considered the default position for most actions.",
+  
+  "attune": {
+    "name": "Attune",
+    "desc": "When you attune to the Way, you open your mind to the galactic energies flowing throughout existence. You might communicate with a non-sentient species or robot. You could safely handle Precursor artifacts or remnants that tap directly into the Way. You might sense unseen danger, or killing intent (though study might be better)."
+  },
+  
+  "command": {
+    "name": "Command",
+    "desc": "When you command, you compel obedience with your force of personality. You might intimidate or threaten to get what you want. You may lead an action with NPCs. You might order people to do what you want (though sway might be better)."
+  },
+  
+  "consort": {
+    "name": "Consort",
+    "desc": "When you consort, you socialize with friends and contacts. You might gain access to resources, information, people, or places. You might make a good impression or win someone over with your charm and style. You might make new friends or connect with your heritage or background. You could try to direct your friends with social pressure (but command might be better)."
+  },
+  
+  "doctor": {
+    "name": "Doctor",
+    "desc": "When you doctor, you attend to the needs of another by lending aid and comfort, or you look scientifically at the world. You might treat someone’s injuries. You might analyze a substance’s composition to learn how it functions. You might comfort someone in distress (but consort might be better)."
+  },
+
+  "hack": {
+    "name": "Hack",
+    "desc": "When you hack, you breach the security systems of computers or override their controls. You might access a data console to find a captive being held somewhere on the station. You might scramble a drone’s control systems to keep it from firing on you. You might override a door’s controls to get it to open (though rig might be better)."
+  },
+
+  "helm": {
+    "name": "Helm",
+    "desc": "When you helm, you pilot a vehicle or use vehicle weapons. You might plot a jump through a dark hyperspace lane. You might dive through a canyon to escape a chasing ship. You might fire quad-lasers at hostile pirates. You might reroute power on the ship to weather fire (though rig may be better)."
+  },
+
+  "rig": {
+    "name": "Rig",
+    "desc": "When you rig mechanisms, you alter how an existing mechanism works or create a new one. You might disable a trap. You might repair a damaged ship system. You might crack a safe. You might overdrive an engine. You might program a bomb to detonate later. You might force a door open (though hack might be better)."
+  },
+  
+  "scramble": {
+    "name": "Scramble",
+    "desc": "When you scramble, you lift, climb, jump, run, or swim, usually either away from or into danger. You might vault over a turnstile while escaping authorities. You might climb up the side of a cliff to approach a secret base. You might dodge blaster fire as you cross the hanger to get to your ship. You might chase after a mark you're following (though skulk may be better)."
+  },
+  
+  "scrap": {
+    "name": "Scrap",
+    "desc": "When you scrap, you engage in pitched combat with the intent to harm or neutralize your opposition. You might brawl or wrestle with your foe. You might use a melee weapon. You might storm a barricade or hold a position in battle. You might lay down blaster fire. If you're using a vehicle or ship weapon, you should use helm instead."
+  },
+  
+  "study": {
+    "name": "Study",
+    "desc": "When you study, you scrutinize details and interpret evidence. You might gather information from documents, newsfeeds, and books. You might do research on an esoteric topic. You could try to examine events to understand a pressing situation. You might closely analyze a person to detect lies or true feelings (but consort might be better). You could deduce a person’s intention to kill you (but attune might be better)."
+  },
+  
+  "sway": {
+    "name": "Sway",
+    "desc": "When you sway, you influence someone with guile, charm, or logic.You might outright lie to someone's face. You might persuade asucker to believe you. You might argue the facts with an officer. You could try to trick people into affection or obedience (but consort or command might be better)."
+  }
+}

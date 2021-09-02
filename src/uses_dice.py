@@ -6,9 +6,7 @@ class UsesDice(object):
   description = None
   num_die = None
 
-  def __init__(self, num_die: int):
-    self.num_die = num_die
-  
+ 
   def roll(self):
     if( self.num_die ):
       result = d20.roll( f"{self.num_die}d6kh1" )
@@ -22,9 +20,12 @@ class UsesDice(object):
 
   def getTitle(self, ctx):
     name = str(ctx.message.author.nick if ctx.message.author.nick else ctx.message.author).split("#")[0]
+    command = ctx.command.name.capitalize()
 
     title = self.title.replace("{#}", str(self.num_die))
     title = title.replace("{name}", name)
+    title = title.replace("{action}", command)
+
     return title
 
   def getEmbed(self, ctx):
