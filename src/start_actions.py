@@ -51,25 +51,30 @@ def start_actions(bot):
   @bot.command()
   async def scramble(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Scramble(die).getEmbed(ctx))
 
   @bot.command()
   async def scrap(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Scrap(die).getEmbed(ctx))
 
   @bot.command()
   async def skulk(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Skulk(die).getEmbed(ctx))
 
   @bot.command()
   async def study(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Study(die).getEmbed(ctx))
 
   @bot.command()
   async def sway(ctx, *args: int):
     die = args[0] if len(args) else 0
+    await ctx.message.delete()
     await ctx.send(embed=Sway(die).getEmbed(ctx))
   
