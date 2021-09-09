@@ -89,6 +89,11 @@ class Actions(UsesDice, commands.Cog):
     await self.executeAction(args, ctx)
   
   @commands.command()
+  async def skulk(self, ctx, *args: int):
+    """!skulk <num of dice to roll (defaults to 0)>"""
+    await self.executeAction(args, ctx)
+  
+  @commands.command()
   async def study(self, ctx, *args: int):
     """!study <num of dice to roll (defaults to 0)>"""
     await self.executeAction(args, ctx)

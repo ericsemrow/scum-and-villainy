@@ -26,10 +26,12 @@ class SetFields:
   actions = ["attune", "command", "consort", "doctor", "hack", "helm", "rig", "scramble", "scrap", "skulk", "study", "sway"]
 
   def __init__(self, args):
+    print( args) 
     for value in args:
       if str(value).lower() in self.actions:
         self.action = value.capitalize()
       elif value.startswith("<@!"):
+        print ("got the user", value)
         self.user = value
       elif str(value)[0] in self.positions.keys():
         self.position = self.positions[str(value)[0]]

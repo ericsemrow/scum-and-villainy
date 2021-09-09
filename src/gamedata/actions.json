@@ -46,6 +46,11 @@
     "desc": "When you scrap, you engage in pitched combat with the intent to harm or neutralize your opposition. You might brawl or wrestle with your foe. You might use a melee weapon. You might storm a barricade or hold a position in battle. You might lay down blaster fire. If you're using a vehicle or ship weapon, you should use helm instead."
   },
   
+  "skulk": {
+    "name": "Skulk",
+    "desc": "When you skulk, you move stealthily or without being noticed. You might sneak past security or hide in the shadows. You might lift a cred-stick off a mark. You might sneak up behind someone to attack them by surprise (but scrap might be better). You could try to climb up the side of a building (but scramble might be better)."
+  },
+
   "study": {
     "name": "Study",
     "desc": "When you study, you scrutinize details and interpret evidence. You might gather information from documents, newsfeeds, and books. You might do research on an esoteric topic. You could try to examine events to understand a pressing situation. You might closely analyze a person to detect lies or true feelings (but consort might be better). You could deduce a person’s intention to kill you (but attune might be better)."
