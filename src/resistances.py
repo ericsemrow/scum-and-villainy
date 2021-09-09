@@ -34,7 +34,8 @@ class Resistances(UsesDice, commands.Cog):
         msg = self.roll_result[7]
     
     return f"{str(result)}: {msg}"
-        
+  
+  
   async def executeAction(self, args, ctx):
     self.num_die = args[0] if len(args) else 0
     self.description = self.resistance_data[ctx.command.name.lower()]["desc"]
@@ -43,17 +44,28 @@ class Resistances(UsesDice, commands.Cog):
     await ctx.send(embed=self.getEmbed(ctx))
 
   @commands.command()
+  @commands.has_permissions(manage_messages=True)
   async def insight(self, ctx, *args: int):
     """!insight <num of dice to roll (defaults to 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
+  @commands.has_permissions(manage_messages=True)
   async def prowess(self, ctx, *args: int):
     """!prowess <num of dice to roll (defaults to 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
+  @commands.has_permissions(manage_messages=True)
   async def resolve(self, ctx, *args: int):
     """!resolve <num of dice to roll (defaults to 0)>"""
     await self.executeAction(args, ctx)
   
+  @insight.error
+  @prowess.error
+  @resolve.error
+  async def handle_bot_exceptions(self, ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+      await ctx.send("This bot seems to be missing the required permissions.")
+    if isinstance(error, commands.CommandInvokeError):
+      await ctx.send("This bot seems to be missing the required permission.")

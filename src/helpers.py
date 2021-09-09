@@ -3,13 +3,14 @@ import d20
 from src.set import SetRoll
 
 class Helpers(commands.Cog):
-
   @commands.command(aliases=['r'])
+  @commands.has_permissions(send_messages=True)
   async def roll(self, ctx, *, arg):
     """Standard dice roller. Alias: r"""
     await ctx.send(str(d20.roll(arg)))
 
-  @commands.command()
+  @commands.command()  
+  @commands.has_permissions(manage_messages=True)
   async def set(self, ctx, *args):
     """
       Receives up to four arguments: User Ping, Position, Effect, Action
@@ -21,3 +22,11 @@ class Helpers(commands.Cog):
     """
     await ctx.message.delete()
     await ctx.send(embed=SetRoll(args).getEmbed())
+
+  @roll.error
+  @set.error
+  async def handle_bot_exceptions(self, ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+      await ctx.send("This bot seems to be missing the required permissions.")
+    if isinstance(error, commands.CommandInvokeError):
+      await ctx.send("This bot seems to be missing the required permission.")

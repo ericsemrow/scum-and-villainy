@@ -15,21 +15,25 @@ class CharTools(commands.Cog):
     char_repo.store_character_for_user(char, ctx.author.id)
   
   @commands.command()
+  @commands.has_permissions(manage_messages=True)
   async def sheet(self, ctx):
     char_repo = CharacterRepository()
     char = char_repo.get_active_character_for_user(ctx.author.id)
 
     if char is not None:
+      await ctx.message.delete()
       await ctx.send(embed=char_repo.getEmbed(ctx, char))
     else:
       await self.handle_no_sheet(ctx)
     
   @commands.command()
+  @commands.has_permissions(send_messages=True)
   async def xp(self, ctx, type="pl", amount=0):
     char_repo = CharacterRepository()
     char = char_repo.get_active_character_for_user(ctx.author.id)
     if char is not None:
       report = char_repo.add_xp(ctx.author.id, char, type, int(amount))
+      await ctx.message.delete()
       await ctx.send(embed=discord.Embed(description=str(report)))
     else:
       await self.handle_no_sheet(ctx)
@@ -38,3 +42,11 @@ class CharTools(commands.Cog):
 
   async def handle_no_sheet(self, ctx):
     ctx.send("No sheet loaded. Have you used `!sheet <url>`?")
+
+  @sheet.error
+  @xp.error
+  async def handle_bot_exceptions(self, ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+      await ctx.send("This bot seems to be missing the required permissions.")
+    if isinstance(error, commands.CommandInvokeError):
+      await ctx.send("This bot seems to be missing the required permission.")
