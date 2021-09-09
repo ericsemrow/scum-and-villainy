@@ -20,7 +20,7 @@ Ex. `!sway 2`
 Rolling just `![action]` will assume 0 dice and therefore roll 2d6kl1
 
 ### Resistances
-#### `![Resistance] [number of dice]`
+#### `![resistance] [number of dice]`
 
 The same format as action rolls. You'll roll a number of d6s which will deducted from 6. The resulting embedded message will tell you how much stress you add.
 
