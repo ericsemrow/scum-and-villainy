@@ -30,7 +30,7 @@ class SetFields:
     for value in args:
       if str(value).lower() in self.actions:
         self.action = value.capitalize()
-      elif value.startswith("<@!"):
+      elif value.startswith("<@"):
         print ("got the user", value)
         self.user = value
       elif str(value)[0] in self.positions.keys():
