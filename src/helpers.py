@@ -1,8 +1,6 @@
-import discord
+import discord, d20, argparse, os, json
 from discord.ext import commands
-import d20
 from src.set import SetRoll
-import argparse
 
 
 parser = argparse.ArgumentParser(description='Take in params')
@@ -45,6 +43,45 @@ class Helpers(commands.Cog):
     """
     await ctx.message.delete()
     await ctx.send(embed=SetRoll(args).getEmbed())
+
+
+  @commands.command()  
+  @commands.has_permissions(manage_messages=True)
+  async def setup(self, ctx, arg):
+    
+    filepath = os.path.join(os.path.relpath("src/gamedata"), "server_template.json")
+    f = open(filepath, "r")
+    template = json.load(f)
+    f.close()
+
+    if arg == "channels":
+
+      for group in template["groups"]:
+        category = discord.utils.get(ctx.guild.categories, name=group["name"])
+        if category is None:
+          category = await ctx.guild.create_category(group["name"])
+        for json_channel in group["channels"]:
+          channel = discord.utils.get(ctx.guild.channels, name=json_channel["name"])
+          if channel is None:
+            channel = await ctx.guild.create_text_channel(json_channel["name"], category=category)
+          
+          for post in json_channel["posts"]:
+            exists = False
+            async for message in channel.history(limit=25):
+              if message.content == post:
+                exists = True
+                break
+
+            if not exists:
+              post = await channel.send(content=post)
+              
+    if arg == "roles":
+      for json_role in template["roles"]:
+        role = discord.utils.get(ctx.guild.roles, name=json_role["name"])
+        if role is None:
+          color = getattr(discord.Colour, json_role["colour"])
+          role = await ctx.guild.create_role(name=json_role["name"], colour=color(), mentionable=True)
+
 
   @roll.error
   @set.error

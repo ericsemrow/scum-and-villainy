@@ -26,6 +26,15 @@ class ResolveModel(FromRaw):
 
     return self
 
+  def getRating(self):
+    rating = 0
+    if self.attune > 0: rating += 1
+    if self.command > 0: rating += 1
+    if self.consort > 0: rating += 1
+    if self.sway > 0: rating += 1
+
+    return rating
+
   def from_raw(self, source: dict):
     """
     "resolve_xp1","resolve_xp2","resolve_xp3","resolve_xp4","resolve_xp5","resolve_xp6","attune1","attune2","attune3","attune4","command1","command2","command3","command4","consort1","consort2","consort3","consort4","sway1","sway2","sway3","sway4"

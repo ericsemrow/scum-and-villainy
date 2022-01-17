@@ -46,7 +46,6 @@ class CharacterRepository(Firestore):
     else:
       try:
         attribute = getattr(char, types[abbrev])
-        print (attribute.xp)
         attribute.xp += amount
       except KeyError:
         return None
@@ -55,7 +54,9 @@ class CharacterRepository(Firestore):
     
     return attribute
 
-    
+  def getSkills(self, ctx, char: Character):
+    return {**char.insight.to_dict(), **char.prowess.to_dict(), **char.resolve.to_dict()}
+  
   def getEmbed(self, ctx, char: Character):
     embed = discord.Embed(title=char.name, description=str(char))
     

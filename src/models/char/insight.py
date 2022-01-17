@@ -26,7 +26,15 @@ class InsightModel(FromRaw):
 
     return self
 
+  def getRating(self):
+    rating = 0
+    if self.doctor > 0: rating += 1
+    if self.hack > 0: rating += 1
+    if self.rig > 0: rating += 1
+    if self.study > 0: rating += 1
 
+    return rating
+    
   def from_raw(self, source: dict):
     """
     "AW9":"insight_xp1","AX9":"insight_xp2","AY9":"insight_xp3","AZ9":"insight_xp4","BB9":"insight_xp5","BA9":"insight_xp6","doctor1","doctor2","doctor3","doctor4","hack1","hack2","hack3","hack4","rig1","rig2","rig3","rig4","study1","study2","study3"

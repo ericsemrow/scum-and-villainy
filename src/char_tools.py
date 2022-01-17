@@ -13,6 +13,8 @@ class CharTools(commands.Cog):
     sheet_data = g_sheets.get_sheet_by_id(sheet_id)
     char = char_repo.get_char_from_raw(sheet_data)
     char_repo.store_character_for_user(char, ctx.author.id)
+
+    await ctx.send("Sheet successfully imported! Use `!sheet` to print.")
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)

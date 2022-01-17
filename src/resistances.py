@@ -1,5 +1,6 @@
 import os, json
 from discord.ext import commands
+from src.repositories.character_repository import CharacterRepository
 from src.uses_dice import UsesDice
  
 class Resistances(UsesDice, commands.Cog):
@@ -37,12 +38,22 @@ class Resistances(UsesDice, commands.Cog):
   
   
   async def executeAction(self, args, ctx):
-    self.num_die = args[0] if len(args) else 0
+    self.num_die = args[0] if len(args) else self.attrRatingFromSheet(ctx, ctx.command.name.lower())
     self.description = self.resistance_data[ctx.command.name.lower()]["desc"]
 
     await ctx.message.delete()
     await ctx.send(embed=self.getEmbed(ctx))
 
+  def attrRatingFromSheet(self, ctx, attr):
+    charRepo = CharacterRepository()
+    char = charRepo.get_active_character_for_user(ctx.author.id)
+    if char:
+      attribute = getattr(char, attr)
+      return attribute.getRating()
+    else:
+      return 0
+
+      
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def insight(self, ctx, *args: int):
@@ -69,3 +80,5 @@ class Resistances(UsesDice, commands.Cog):
       await ctx.send("This bot seems to be missing the required permissions.")
     if isinstance(error, commands.CommandInvokeError):
       await ctx.send("This bot seems to be missing the required permission.")
+
+    raise error

@@ -26,6 +26,15 @@ class ProwessModel(FromRaw):
 
     return self
 
+  def getRating(self):
+    rating = 0
+    if self.helm > 0: rating += 1
+    if self.scramble > 0: rating += 1
+    if self.scrap > 0: rating += 1
+    if self.skulk > 0: rating += 1
+
+    return rating
+
   def from_raw( self, source: dict):
     """
     Pulling in values from the data source

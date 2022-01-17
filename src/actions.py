@@ -1,6 +1,7 @@
 import os, json
 from discord.ext import commands
 from src.uses_dice import UsesDice
+from src.repositories.character_repository import CharacterRepository
 class Actions(UsesDice, commands.Cog):
 
   description = None
@@ -37,82 +38,92 @@ class Actions(UsesDice, commands.Cog):
     return f"{str(result)}: {msg}"
   
   async def executeAction(self, args, ctx):
-    self.num_die = args[0] if len(args) else 0
+    self.num_die = args[0] if len(args) else await self.skillFromSheet(ctx, ctx.command.name.lower())
+    print (self.num_die)
     self.description = self.action_data[ctx.command.name.lower()]["desc"]
     await ctx.message.delete()
     await ctx.send(embed=self.getEmbed(ctx))
     ctx.send( "There seems to be an issue with your permissions.")
 
+  async def skillFromSheet(self, ctx, skill):
+    charRepo = CharacterRepository()
+    char = charRepo.get_active_character_for_user(ctx.author.id)
+    if char:
+      points = charRepo.getSkills(ctx, char)
+      return points[skill]
+    else:
+      return 0
+
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def attune(self, ctx, *args: int):
-    """!attune <num of dice to roll (defaults to 0)>"""
+    """!attune <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def command(self, ctx, *args: int):
-    """!command <num of dice to roll (defaults to 0)>"""
+    """!command <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
 
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def consort(self, ctx, *args: int):
-    """!consort <num of dice to roll (defaults to 0)>"""
+    """!consort <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def doctor(self, ctx, *args: int):
-    """!doctor <num of dice to roll (defaults to 0)>"""
+    """!doctor <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def hack(self, ctx, *args: int):
-    """!hack <num of dice to roll (defaults to 0)>"""
+    """!hack <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def helm(self, ctx, *args: int):
-    """!helm <num of dice to roll (defaults to 0)>"""
+    """!helm <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
 
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def rig(self, ctx, *args: int):
-    """!rig <num of dice to roll (defaults to 0)>"""
+    """!rig <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def scramble(self, ctx, *args: int):
-    """!scramble <num of dice to roll (defaults to 0)>"""
+    """!scramble <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def scrap(self, ctx, *args: int):
-    """!scrap <num of dice to roll (defaults to 0)>"""
+    """!scrap <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def skulk(self, ctx, *args: int):
-    """!skulk <num of dice to roll (defaults to 0)>"""
+    """!skulk <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def study(self, ctx, *args: int):
-    """!study <num of dice to roll (defaults to 0)>"""
+    """!study <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def sway(self, ctx, *args: int):
-    """!sway <num of dice to roll (defaults to 0)>"""
+    """!sway <num of dice to roll (defaults to either active sheet or 0)>"""
     await self.executeAction(args, ctx)
 
   @attune.error
@@ -132,3 +143,4 @@ class Actions(UsesDice, commands.Cog):
       await ctx.send("This bot seems to be missing the required permissions.")
     if isinstance(error, commands.CommandInvokeError):
       await ctx.send("This bot seems to be missing the required permission.")
+    raise error

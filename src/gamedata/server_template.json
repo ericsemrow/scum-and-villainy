@@ -1,0 +1,226 @@
+{
+  "groups": [
+    {
+      "name": "Text Channels",
+      "channels": [
+        {
+          "name": "rp",
+          "posts": []
+        },
+        {
+          "name": "ooc",
+          "posts": []
+        },
+        {
+          "name": "dice",
+          "posts": []
+        },
+        {
+          "name": "dramatis-personae",
+          "posts": []
+        },
+        {
+          "name": "history",
+          "posts": []
+        }
+      ]
+    },
+    {
+      "name": "Sheets",
+      "channels": [
+        {
+          "name": "mechanic",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927658677740122132/unknown.png"
+          ]
+        },
+        {
+          "name": "muscle",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927658911631286332/unknown.png"
+          ]
+        },
+        {
+          "name": "mystic",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927659117085093928/unknown.png"
+          ]
+        },
+        {
+          "name": "pilot",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927659303685460028/unknown.png"
+          ]
+        },
+        {
+          "name": "scoundrel",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927659460678266910/unknown.png"
+          ]
+        },
+        {
+          "name": "speaker",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927659640815243284/unknown.png"
+          ]
+        },
+        {
+          "name": "stitch",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927659805064179722/unknown.png"
+          ]
+        },
+        {
+          "name": "stardancer",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927660063647203418/unknown.png"
+          ]
+        },
+        {
+          "name": "cerberus",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927660240126750790/unknown.png"
+          ]
+        },
+        {
+          "name": "firedrake",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880576764307464272/927660383890718810/unknown.png"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rules",
+      "channels": [
+        {
+          "name": "actions",
+          "posts": [
+            "**ACTIONS**\n```attune, command, consort, doctor, hack, helm, rig, scramble, scrap, skulk, study, sway```\nYou make an action roll when your character does something potentially dangerous or troublesome. The possible results of the action roll depend on your character’s position. There are three positions: **controlled**, **risky**, and **desperate**. If you’re in a **controlled** position, the possible consequences are less serious. If you’re in a **desperate** position, the consequences can be severe. If you’re somewhere in-between, it’s **risky**—usually considered the \"default\" position for most actions.",
+            "1. The player states their **goal** for the action.\n2. The player chooses the **action** rating.\n3. The GM sets the **position** for the roll.\n4. The GM sets the **effect** level for the action.\n5. Add **bonus dice**.\n6. The player **rolls the dice** and we judge the result.",
+            "```Positions:\n\nControlled: You're set up for success. You’re exploiting a dominant advantage.\n\nRisky: You go head-to-head. You’re acting under duress. You’re taking a chance.\n\nDesperate: You're overreaching. You’re in real trouble. A very dangerous maneuver.```",
+            "**BONUS DICE**\nYou can normally get three bonus dice for your action roll (some special abilities might give you additional bonus dice).\n\nFor one bonus die, you can get assistance from a teammate. They take 1 stress, say how they help you, and give you +1d.\n\nFor another bonus die, you can either push yourself (take 2 stress) or you can accept a Devil’s Bargain (you can’t get dice for both, it’s one or the other). Note though that pushing gives you the option of taking +1 effect. You can push for effect and accept a Devil’s Bargain for an additional die on your roll.\n\nFor a third bonus die, you can spend a gambit. A gambit is a limited resource shared by your whole crew, and earned by taking a few risks.",
+            "https://cdn.discordapp.com/attachments/880576764307464272/927667846228631593/unknown.png",
+            "https://cdn.discordapp.com/attachments/880576764307464272/927667954710106172/unknown.png",
+            "https://cdn.discordapp.com/attachments/880576764307464272/927668065800437800/unknown.png",
+            "```EFFECT\n\nLimited: You achieve a partial or weak effect. How is your impact diminished?\n\nStandard: You achieve what we would expect as “normal” with the action.\n\nGreat: You achieve more than usual. How does the extra effort manifest?```",
+            "ASSESSING FACTORS\n\nTo assess effect level, first start with your gut feeling, given this situation. Then, if needed, assess three factors that may modify the effect level: **potency**, **scale**, and **quality**. If the PC has an advantage in a given factor, consider a higher effect level. If they have a disadvantage, consider a reduced effect level.",
+            "**Scale**: This factor considers particular weaknesses, taking extra time or a bigger risk (page 28), or the influence of strange powers.\n**Quality/Tier**: Quality represents the effectiveness of tools, weapons, or other resources, usually summarized by crew quality or faction Tier. Fine items count as +1 bonus in quality, stacking with Tier/crew quality.\n\n**Scale**: Scale represents the number of opponents, size of an area covered, scope of influence, etc. In battle, more people are better. When infiltrating, more people are a hindrance.",
+            "`TRADING POSITION FOR EFFECT`\n\n After factors are considered and the GM has announced the effect level, a player might want to trade position for effect, or vice versa. For instance, if they’re going to make a risky roll with standard effect (the most common scenario, generally), they might instead want to push their luck and make a desperate roll but with great effect."
+          ]
+        },
+        {
+          "name": "consequences",
+          "posts": [
+            "Enemy actions, bad circumstances, or the outcome of a roll can inflict consequences on a PC.",
+            "```reduced effect, complication, lost, opportunity, worse position, harm```",
+            "**REDUCED EFFECT**\nThis consequence represents impaired performance. _The PC’s action isn’t as effective as anticipated. You hit him, but it’s only a flesh wound. She accepts the forged invitation, but she’ll keep her eye on you throughout the night. You’re able to scale the wall, but it’s slow going—you’re only halfway up._",
+            "**COMPLICATION**\nThis consequence represents trouble, mounting danger, or a new threat. The GM might introduce an immediate problem that results from the action: _the room catches fire, you’re disarmed, the crew takes +1 heat from witnesses, you lose status with a faction, the target evades you and now it’s a chase, reinforcements arrive, etc_. The GM might tick a clock for the complication instead.",
+            "**LOST OPPORTUNITY**\nThis consequence represents shifting circumstances. _You had an opportunity to achieve your goal with this action, but it slipped away._ To try again, you need a new approach—usually a new form of action or a change in circumstances.",
+            "**WORSE POSITION**\nThis consequence represents losing control of the situation—the action carries you into a more dangerous position. _Perhaps you make the leap across to the next balcony, only to end up dangling by your fingertips._ You haven’t failed, but you haven’t succeeded yet, either. You can try again, re-rolling at the new, worse position. This is a good consequence to choose to show escalating action.",
+            "**HARM**\nThis consequence represents a long-lasting debility (or death). When you suffer harm, record the specific injury on your character sheet equal to the level of harm you suffer.",
+            "**NON-PHYSICAL HARM**\nHarm doesn’t just have to be broken ribs and knife wounds. “Snubbed” harm can happen at a fancy Governor’s dinner party."
+          ]
+        },
+        {
+          "name": "resistance",
+          "posts": [
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clocks",
+      "channels": [
+        {
+          "name": "four-clock",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880906732975583282/880914596813209720/0.png",
+            "https://cdn.discordapp.com/attachments/880906732975583282/880914637338599484/1-4.png",
+            "https://cdn.discordapp.com/attachments/880906732975583282/880914664203112488/2-4.png",
+            "https://cdn.discordapp.com/attachments/880906732975583282/880914687749943346/3-4.png",
+            "https://cdn.discordapp.com/attachments/880906732975583282/880914714031423508/4-4.png"
+          ]
+        },
+        {
+          "name": "six-clock",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880906760569892934/880915902328102962/0-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880915944476643448/1-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880915962528931840/2-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880915980073709608/3-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880916000424493126/4-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880916021173702696/5-6.png",
+            "https://cdn.discordapp.com/attachments/880906760569892934/880916040039673876/6-6.png"
+          ]
+        },
+        {
+          "name": "eight-clock",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920067494264912/0-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920089065574420/1-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920107143032832/2-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920124079612036/3-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920142211584000/4-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920159479562260/5-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920177095606272/6-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920195353411654/7-8.png",
+            "https://cdn.discordapp.com/attachments/880906781948248074/880920212965306378/8-8.png"
+          ]
+        },
+        {
+          "name": "twelve-clock",
+          "posts": [
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920889363935403/0-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920906338291782/1-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920921060286534/2-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920936273047642/3-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920953184460830/4-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920969198309376/5-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880920986113949706/6-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921002241064980/7-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921018678521866/8-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921033287295066/9-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921055974293554/10-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921070230704198/11-12.png",
+            "https://cdn.discordapp.com/attachments/880906801854431272/880921084323590154/12-12.png"
+          ]
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "name": "DM",
+      "colour": "greyple"
+    },
+    {
+      "name":"Mechanic",
+      "colour": "dark_orange"
+    },
+    {
+      "name":"Muscle",
+      "colour": "darker_grey"
+    },
+    {
+      "name":"Mystic",
+      "colour": "magenta"
+    },
+    {
+      "name":"Pilot",
+      "colour": "red"
+    },
+    {
+      "name":"Scoundrel",
+      "colour": "green"
+    },
+    {
+      "name":"Speaker",
+      "colour": "orange"
+    },
+    {
+      "name":"Stitch",
+      "colour": "blue"
+    }
+  ]
+}

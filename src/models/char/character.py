@@ -190,7 +190,7 @@ class Character(FromRaw):
 
     self.abilities = []
     for i in range(12): #12 possible abilities
-      if raw["ability"+str(i+1)+"_check"] is not None:
+      if (raw["ability"+str(i+1)+"_check"] is not None and raw["ability"+str(i+1)] is not None):
         self.abilities.append(raw["ability"+str(i+1)].strip())
     
     return self
