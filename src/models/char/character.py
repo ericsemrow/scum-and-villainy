@@ -38,7 +38,7 @@ class Character(FromRaw):
   def abilities(self):
     return self._abilities
 
-  def __init__(self, id=None,playbook="",name="",crew="",alias="",look="",heritage="",background="",vice="",stress="",playbook_xp=0,insight=None,prowess=None,resolve=None,armor=None,trauma=None,harm=[],healing=[],abilities=[]):
+  def __init__(self, id=None,playbook="",name="",crew="",alias="",look="",heritage="",background="",vice="",stress=0,playbook_xp=0,insight=None,prowess=None,resolve=None,armor=None,trauma=None,harm=[],healing=[],abilities=[]):
 
     if insight is None:
       insight = InsightModel()
@@ -205,6 +205,14 @@ class Character(FromRaw):
     self.background = source["background"]
     self.vice = source["vice"]
 
+  def get_stress(self):
+    return f"{self.name} ({self.alias}), {self.playbook}\nStress: {self.num_to_dots(self.stress, 9)}"
+
+
+  def get_xp(self):
+    return f"{self.name} ({self.alias}), {self.playbook}\nPlaybook XP: {self.num_to_dots(self.playbook_xp, 8)}\nInsight: {self.num_to_dots(self.insight.xp, 6)}\nProwess: {self.num_to_dots(self.prowess.xp, 6)}\nResolve: {self.num_to_dots(self.resolve.xp, 6)}"
+
+
   def __str__(self):
     abilities = str('\n\n'.join(self.abilities))
 
@@ -217,6 +225,8 @@ class Character(FromRaw):
     **Background:** {self.background}
     **Vice:** {self.vice}
 
+    **Stress:** {self.num_to_dots(self.stress, 9)}
+    
     **Playbook XP:** {self.num_to_dots(self.playbook_xp, 8)}
 
     {str(self._insight)}

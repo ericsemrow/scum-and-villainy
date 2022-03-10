@@ -30,6 +30,14 @@ class Helpers(commands.Cog):
     await ctx.message.delete()
     await ctx.send(embed=embed)
 
+  @commands.command(aliases=['dm'])
+  @commands.has_permissions(send_messages=True)
+  async def botvoice(self, ctx, *, arg):
+    """Make the bot say whatever you like. !dm Hey there."""
+    await ctx.message.delete()
+    await ctx.send(arg)
+
+
   @commands.command()  
   @commands.has_permissions(manage_messages=True)
   async def set(self, ctx, *args):

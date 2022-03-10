@@ -42,13 +42,21 @@ class CharacterRepository(Firestore):
     abbrev = attr[0:2]
     if abbrev == "pl":
       char.playbook_xp += amount
-      attribute = char
     else:
       try:
         attribute = getattr(char, types[abbrev])
         attribute.xp += amount
       except KeyError:
         return None
+    
+    self.store_character_for_user( char, user)
+    
+    return char.get_xp()
+
+  def add_stress( self, user, char: Character, amount: int):
+    
+    char.stress += amount
+    attribute = char.get_stress()
     
     self.store_character_for_user( char, user)
     

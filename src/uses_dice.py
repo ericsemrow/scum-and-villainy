@@ -30,6 +30,6 @@ class UsesDice(object):
 
   def getEmbed(self, ctx):
     embed = discord.Embed(title=self.getTitle(ctx), description=self.description)
-    embed.add_field(name=f"shake shake shake...roll.....", value=self.getRoll(), inline=True)
+    embed.add_field(name=f"shake shake shake...Boom.....", value=self.getRoll(), inline=True)
     
     return embed

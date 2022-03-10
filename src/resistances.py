@@ -57,19 +57,19 @@ class Resistances(UsesDice, commands.Cog):
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def insight(self, ctx, *args: int):
-    """!insight <num of dice to roll (defaults to 0)>"""
+    """!insight <num of dice to roll (defaults to sheet value)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def prowess(self, ctx, *args: int):
-    """!prowess <num of dice to roll (defaults to 0)>"""
+    """!prowess <num of dice to roll (defaults to sheet value)>"""
     await self.executeAction(args, ctx)
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
   async def resolve(self, ctx, *args: int):
-    """!resolve <num of dice to roll (defaults to 0)>"""
+    """!resolve <num of dice to roll (defaults to sheet value)>"""
     await self.executeAction(args, ctx)
   
   @insight.error

@@ -126,6 +126,21 @@
           "name": "resistance",
           "posts": [
           ]
+        },
+        {
+          "name": "cred",
+          "posts": [
+            "**1 cred:** A stick full of credits. A month’s wages.\n**2 cred:** A fine weapon. A weekly income for a small business. A fine\npiece of art. A set of luxury clothes.\n**3 cred:** An exquisite jewel. A case full of hard currency.\n**4 cred:** A good monthly take for a small business. A small safe full\nof rare metals and valuables. A rare artifact.\n**6 cred:** Liquidating a significant asset—a hovercar, a small house.\n**8 cred:** A treasure trove.\n**10 cred:** A small personal ship."
+          ]
+        },
+        {
+          "name": "engagement-roll",
+          "posts": [
+            "Once the players choose a plan and provide its detail, the GM cuts to the action describing the scene as the crew engages their first obstacle. How is this established? The way the GM describes the starting situation impacts how complicated the operation turns out to be. Rather than expecting the GM to simply \"get it right\" each time, we use a dice roll instead. This is the **engagement roll.**\n\nThere are six different plans, each with a missing detail you need to provide (see the list below). To plan a job, simply choose the plan and supply the detail. Then the GM will cut to the action as the early moments of the operation unfold.",
+            "```ASSAULT - Do violence to a target. _Detail: The point of attack._```\n```DECEPTION - Lure, trick, or manipulate. _Detail: The method of deception._```\n```INFILTRATION - Trespass unseen. _Detail: The point of infiltration._```\n```MYSTIC - Engage mystic, Way, or Ur power. _Detail: Arcane power._```\n```SOCIAL - Negotiate, bargain, or persuade. _Detail: The social connection._```\n```TRANSPORT - Carry cargo or people through danger. _Detail: The route and means._```",
+            "**MAJOR ADVANTAGES / DISADVANTAGES**\n\n- Is this operation particularly bold or daring? Take +1d. Is this operation overly complex or contingent on many factors? Take -1d.\n\n-  Does the plan’s detail expose a vulnerability of the target or hit them where they’re weakest? Take +1d. Is the target strongest against this approach, or do they have particular defenses orspecial preparations? Take -1d.\n\n- Can any of your friends or contacts provide aid or insight for this operation? Take +1d. Are any enemies or rivals interfering in the operation? Take -1d.\n\n- Are there any other elements that you want to consider? Maybe a lower-Tier target will give you +1d. Maybe a higher-Tier target will give you -1d. Maybe there’s a situation in the system that makes the operation more or less tricky.",
+            "**Critical:** Exceptional result. You’ve already overcome the first obstacle and you’re in a controlled position for what’s next.\n\n**6:** Good result. You’re in a controlled position when the action starts.\n\n**4/5:** Mixed result. You’re in a risky position when the action starts.\n\n**1-3:** Bad result. You’re in a desperate position when the action starts."
+          ]
         }
       ]
     },
