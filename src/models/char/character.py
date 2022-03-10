@@ -38,7 +38,7 @@ class Character(FromRaw):
   def abilities(self):
     return self._abilities
 
-  def __init__(self, id=None,playbook="",name="",crew="",alias="",look="",heritage="",background="",vice="",stress=0,playbook_xp=0,insight=None,prowess=None,resolve=None,armor=None,trauma=None,harm=[],healing=[],abilities=[]):
+  def __init__(self, id=None,sheet_id=None,playbook="",name="",crew="",alias="",look="",heritage="",background="",vice="",stress=0,playbook_xp=0,insight=None,prowess=None,resolve=None,armor=None,trauma=None,harm=[],healing=[],abilities=[]):
 
     if insight is None:
       insight = InsightModel()
@@ -51,6 +51,7 @@ class Character(FromRaw):
     if abilities is None:
       abilities
 
+    self.sheet_id = sheet_id
     self.id = id
     self.playbook = playbook
     self.name = name
@@ -122,6 +123,8 @@ class Character(FromRaw):
 
   def from_dict(self, source: dict):
     self.set_basic_vars(source)
+    
+    self.sheet_id = source["sheet_id"]
     self.id = source["id"]
     
     # These might need additional objects
@@ -144,6 +147,7 @@ class Character(FromRaw):
   def to_dict(self):
     return {
       "id": self.id,
+      "sheet_id": self.sheet_id,
       "playbook": self.playbook,
       "name": self.name,
       "crew": self.crew,
@@ -167,9 +171,10 @@ class Character(FromRaw):
   
   def from_raw(self, raw: dict):
     """
-      {"id","playbook","name","crew","alias","look","heritage","heritage_override","background","background_override","vice","vice_override","stress_1","stress_2","stress_3","stress_4","stress_5","stress_6","stress_7","stress_8","stress_9","trauma_1","trauma_2","trauma_3","trauma_4","harm1_1","harm1_2","harm2_1","harm2_2","harm3","armor","heavy","special","ability1_check","ability1","ability2_check","ability2","ability3_check","ability3","ability4_check","ability4","ability5_check","ability5","ability6_check","ability6","ability7_check","ability7","ability8_check","ability8","ability9_check","ability9","ability10_check","ability10","ability11_check","ability11","ability12_check","ability12","playbook_xp1","playbook_xp2","playbook_xp3","playbook_xp4","playbook_xp5","playbook_xp6","playbook_xp7","playbook_xp8","insight_xp1","insight_xp2","insight_xp3","insight_xp4","insight_xp5","insight_xp6","prowess_xp1","prowess_xp2","prowess_xp3","prowess_xp4","prowess_xp5","prowess_xp6","resolve_xp1","resolve_xp2","resolve_xp3","resolve_xp4","resolve_xp5","resolve_xp6","doctor1","doctor2","doctor3","doctor4","hack1","hack2","hack3","hack4","rig1","rig2","rig3","rig4","study1","study2","study3","study4","helm1","helm2","helm3","helm4","scramble1","scramble2","scramble3","scramble4","scrap1","scrap2","scrap3","scrap4","sulk1","skulk2","skulk3","skulk4","attune1","attune2","attune3","attune4","command1","command2","command3","command4","consort1","consort2","consort3","consort4","sway1","sway2","sway3","sway4"}
+      {"id","sheet_id","playbook","name","crew","alias","look","heritage","heritage_override","background","background_override","vice","vice_override","stress_1","stress_2","stress_3","stress_4","stress_5","stress_6","stress_7","stress_8","stress_9","trauma_1","trauma_2","trauma_3","trauma_4","harm1_1","harm1_2","harm2_1","harm2_2","harm3","armor","heavy","special","ability1_check","ability1","ability2_check","ability2","ability3_check","ability3","ability4_check","ability4","ability5_check","ability5","ability6_check","ability6","ability7_check","ability7","ability8_check","ability8","ability9_check","ability9","ability10_check","ability10","ability11_check","ability11","ability12_check","ability12","playbook_xp1","playbook_xp2","playbook_xp3","playbook_xp4","playbook_xp5","playbook_xp6","playbook_xp7","playbook_xp8","insight_xp1","insight_xp2","insight_xp3","insight_xp4","insight_xp5","insight_xp6","prowess_xp1","prowess_xp2","prowess_xp3","prowess_xp4","prowess_xp5","prowess_xp6","resolve_xp1","resolve_xp2","resolve_xp3","resolve_xp4","resolve_xp5","resolve_xp6","doctor1","doctor2","doctor3","doctor4","hack1","hack2","hack3","hack4","rig1","rig2","rig3","rig4","study1","study2","study3","study4","helm1","helm2","helm3","helm4","scramble1","scramble2","scramble3","scramble4","scrap1","scrap2","scrap3","scrap4","sulk1","skulk2","skulk3","skulk4","attune1","attune2","attune3","attune4","command1","command2","command3","command4","consort1","consort2","consort3","consort4","sway1","sway2","sway3","sway4"}
     """
-    
+
+    self.sheet_id = raw["sheet_id"]
     self.id = raw["id"] + raw["playbook"]
     self.set_basic_vars(raw)
     
@@ -196,14 +201,14 @@ class Character(FromRaw):
     return self
 
   def set_basic_vars(self, source):
-    self.playbook = source["playbook"]
-    self.name = source["name"]
-    self.crew = source["crew"]
-    self.alias = source["alias"]
-    self.look = source["look"]
-    self.heritage = source["heritage"]
-    self.background = source["background"]
-    self.vice = source["vice"]
+    self.playbook = source["playbook"] or ""
+    self.name = source["name"] or ""
+    self.crew = source["crew"] or ""
+    self.alias = source["alias"] or ""
+    self.look = source["look"] or ""
+    self.heritage = source["heritage"] or ""
+    self.background = source["background"] or ""
+    self.vice = source["vice"] or ""
 
   def get_stress(self):
     return f"{self.name} ({self.alias}), {self.playbook}\nStress: {self.num_to_dots(self.stress, 9)}"

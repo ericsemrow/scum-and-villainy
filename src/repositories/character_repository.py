@@ -1,9 +1,10 @@
-import discord
+import discord, re
 from src.models.firestore import Firestore
 from src.models.char.character import Character
 from src.repositories.user_repository import UserRepository
+from src.uses_dice import UsesDice
 
-class CharacterRepository(Firestore):
+class CharacterRepository(Firestore,UsesDice):
 
   COL = "characters"
   
@@ -14,7 +15,26 @@ class CharacterRepository(Firestore):
     doc = user_repo.get_user_ref( user_id ).collection(self.COL).document(active_char).get()
     if doc.exists:
       return Character().from_dict(doc.to_dict())
-  
+
+  async def get_character_by_title(self, ctx, user_id, title):
+    user_repo = UserRepository()
+    docs = user_repo.get_user_ref( user_id ).collection(self.COL).stream()
+    names = []
+    chars = []
+    for doc in docs:
+      char = Character().from_dict(doc.to_dict())
+      if (title.lower() in char.name.lower()) or (title in char.alias.lower()):
+        chars.append(char)
+        names.append(f'Name: {char.name} Alias: {char.alias}')
+
+    index = await self.determine_which(ctx, names)
+    
+    if index is not None:
+      char = chars[index]
+      return char
+    
+    
+    
   def store_character_for_user(self, char: Character, user_id):
     user_repo = UserRepository()
     user = user_repo.get_user_or_create( user_id )
@@ -23,8 +43,9 @@ class CharacterRepository(Firestore):
     user_repo.store_user(user)
     
 
-  def switch_active_character(self, name: str):
-    pass
+  def switch_active_character(self, user_id, char: Character):
+    user_repo = UserRepository()
+    user_repo.get_user_ref( user_id ).set({"data": {"active_character": char.id}}, merge=True)
 
   def get_char_from_raw(self, raw: dict):
     char = Character()

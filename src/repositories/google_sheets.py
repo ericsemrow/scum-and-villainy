@@ -43,5 +43,6 @@ class GoogleSheets(object):
       char_dict[self.range[new_key]] = potential_value
     
     char_dict["id"] = id
+    char_dict["sheet_id"] = id
     char_dict["playbook"] = value["range"].split("!",1)[0]
     return char_dict

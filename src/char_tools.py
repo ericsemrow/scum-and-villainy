@@ -2,22 +2,38 @@ import discord
 from discord.ext import commands
 from src.repositories.google_sheets import GoogleSheets
 from src.repositories.character_repository import CharacterRepository
+from src.uses_dice import UsesDice
 
-class CharTools(commands.Cog):
+class CharTools(commands.Cog, UsesDice):
   
   @commands.command()
   async def gsheet(self, ctx, arg):
     """!gsheet <link to google sheet>
     Make a **copy** of this sheet and drag your playbook tab to the left-most position: https://docs.google.com/spreadsheets/d/1SBI4wjgHUPNGEqmFlR3gY3SEzPh7e8sCA14ilQlXP-g/edit?usp=sharing"""
 
-    g_sheets = GoogleSheets()
-    char_repo = CharacterRepository()
-    sheet_id = g_sheets.get_sheet_id(arg)
-    sheet_data = g_sheets.get_sheet_by_id(sheet_id)
-    char = char_repo.get_char_from_raw(sheet_data)
-    char_repo.store_character_for_user(char, ctx.author.id)
+    if await self.confirm(ctx, "Is your playbook the left-most sheet?"):
+      g_sheets = GoogleSheets()
+      char_repo = CharacterRepository()
+      sheet_id = g_sheets.get_sheet_id(arg)
+      sheet_data = g_sheets.get_sheet_by_id(sheet_id)
+      char = char_repo.get_char_from_raw(sheet_data)
+      char_repo.store_character_for_user(char, ctx.author.id)
+  
+      await ctx.send("Sheet successfully imported! Use `!sheet` to print.")
+    
 
-    await ctx.send("Sheet successfully imported! Use `!sheet` to print.")
+  @commands.command()
+  async def update(self, ctx):
+    """Updates the currently active google sheet"""
+    
+        
+    if await self.confirm(ctx, "This action will overwrite your bot character including stress and xp."):
+      char_repo = CharacterRepository()
+    
+      char = char_repo.get_active_character_for_user(ctx.author.id)
+      print(char)
+      await self.gsheet(ctx, f'/spreadsheets/d/{char.sheet_id}')
+    
   
   @commands.command()
   @commands.has_permissions(manage_messages=True)
@@ -65,10 +81,20 @@ class CharTools(commands.Cog):
     else:
       await self.handle_no_sheet(ctx)
     
-  
+  @commands.command()
+  async def char(self, ctx, *, arg):
+    """Change active characters by name or alias
+    Ex: !char Romeo
+    Ex: !char Hot Shot"""
+    print(arg)
+    char_repo = CharacterRepository()
+    char = await char_repo.get_character_by_title(ctx, ctx.author.id, arg)
 
+    char_repo.switch_active_character(ctx.author.id, char)
+    await ctx.send(f"Active Character: {char.name} ({char.alias})")
+    
   async def handle_no_sheet(self, ctx):
-    ctx.send("No sheet loaded. Have you used `!sheet <url>`?")
+    await ctx.send("No sheet loaded. Have you used `!sheet <url>`?")
 
   @sheet.error
   async def handle_bot_exceptions(self, ctx, error):
