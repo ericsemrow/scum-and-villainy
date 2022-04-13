@@ -14,7 +14,7 @@ WORKDIR /opt/scum-n-villainy/
 
 COPY . ./
 
-RUN poetry update
+RUN poetry self update
 RUN poetry install
 
 
