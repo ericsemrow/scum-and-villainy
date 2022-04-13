@@ -8,7 +8,7 @@ USER bot
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
-ENV PATH="/bot/.poetry/bin:${PATH}"
+ENV PATH="/home/bot/.poetry/bin:${PATH}"
 
 WORKDIR /opt/scum-n-villainy/
 
