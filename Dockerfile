@@ -5,6 +5,9 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
+RUN useradd -m bot && chown -R bot:bot /var/log/supervisor/ /var/run/ /etc/supervisor/
+USER bot
+
 ENV PATH="/home/bot/.poetry/bin:${PATH}"
 
 WORKDIR /opt/scum-n-villainy/
@@ -13,7 +16,5 @@ COPY . ./
 
 RUN poetry update && poetry init
 
-RUN useradd -m bot
-USER bot
 
-CMD ["/usr/bin/supervisord"]
+CMD ["supervisord"]
