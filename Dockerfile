@@ -7,13 +7,11 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 
 ENV PATH="/home/bot/.poetry/bin:${PATH}"
 
-RUN poetry update
-
 WORKDIR /opt/scum-n-villainy/
 
 COPY . ./
 
-RUN poetry init
+RUN poetry update && poetry init
 
 RUN useradd -m bot
 USER bot
