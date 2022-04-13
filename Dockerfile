@@ -6,11 +6,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN useradd -m bot
 USER bot
 
-WORKDIR /opt/scum-n-villainy/
-
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 ENV PATH="/bot/.poetry/bin:${PATH}"
+
+WORKDIR /opt/scum-n-villainy/
 
 COPY . ./
 
