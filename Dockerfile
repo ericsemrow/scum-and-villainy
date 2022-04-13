@@ -14,6 +14,6 @@ WORKDIR /opt/scum-n-villainy/
 
 COPY . ./
 
-RUN poetry init
+RUN poetry update && poetry init
 
 CMD ["/usr/bin/supervisord"]
