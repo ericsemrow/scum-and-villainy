@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 env:
   PROJECT_ID: scum-and-villainy # TODO: update Google Cloud project id
-  GAR_LOCATION: us-west4-b	 # TODO: update region of the Artifact Registry
+  GAR_LOCATION: us-west4	 # TODO: update region of the Artifact Registry
   DEPLOYMENT_NAME: vm-image # TODO: update to deployment name
   REPOSITORY: bots # TODO: update to Artifact Registry docker repository
   IMAGE: scum-and-villainy-discord-bot
