@@ -16,7 +16,7 @@ env:
   PROJECT_ID: scum-and-villainy # TODO: update Google Cloud project id
   GAR_LOCATION: us-west4-b	 # TODO: update region of the Artifact Registry
   DEPLOYMENT_NAME: vm-image # TODO: update to deployment name
-  REPOSITORY: scum-and-villainy # TODO: update to Artifact Registry docker repository
+  REPOSITORY: bots # TODO: update to Artifact Registry docker repository
   IMAGE: scum-and-villainy-discord-bot
 
 jobs:
@@ -51,7 +51,7 @@ jobs:
       run: |-
         echo "${{env.GAR_LOCATION}}-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.REPOSITORY}}/${{env.IMAGE}}:${{github.sha}}" && \
         docker build \
-          --tag "${{env.GAR_LOCATION}}-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.REPOSITORY}}/${{env.IMAGE}}:${{github.sha}}" \
+          --tag "${{env.GAR_LOCATION}}-docker.pkg.dev/${{env.REPOSITORY}}/${{env.PROJECT_ID}}/${{env.IMAGE}}:${{github.sha}}" \
           --build-arg GITHUB_SHA="${{github.sha}}" \
           --build-arg GITHUB_REF="${{github.ref}}" \
           .
