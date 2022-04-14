@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scum-and-villainy
+  labels:
+    app: scum-and-villainy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scum-and-villainy
+  template:
+    metadata:
+      labels:
+        app: scum-and-villainy
+    spec:
+      containers:
+      - name: scum-and-villainy
+        image: us-west4-docker.pkg.dev/scum-and-villainy-bot/bots/scum-and-villainy-discord-bot:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "96Mi"
+            cpu: "25m"
+        envFrom:
+        - secretRef:
+          name: scum-and-villainy-secrets
