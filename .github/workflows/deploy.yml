@@ -67,13 +67,13 @@ jobs:
     # Set up kustomize
     - name: Set up Kustomize
       run: |-
+        cd ./k8s/
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
         # replacing the image name in the k8s template
-        cd ./k8s/
         ./kustomize edit set image ${{env.GAR_LOCATION}}-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.REPOSITORY}}/${{env.IMAGE}}=${{env.GAR_LOCATION}}-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.REPOSITORY}}/${{env.IMAGE}}:${{github.sha}}
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
