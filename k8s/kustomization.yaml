@@ -1,0 +1,4 @@
+commonLabels: 
+  app: scum-and-villainy
+resources:
+  - deployment.yaml
