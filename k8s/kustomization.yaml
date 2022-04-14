@@ -1,3 +1,4 @@
+namespace: bots
 commonLabels: 
   app: scum-and-villainy
 resources:
