@@ -25,4 +25,4 @@ spec:
             cpu: "25m"
         envFrom:
         - secretRef:
-          name: scum-and-villainy-secrets
+            name: scum-and-villainy-secrets
