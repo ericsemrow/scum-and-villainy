@@ -1,5 +1,4 @@
 import os
-import keepalive
 from src.actions import Actions
 from src.resistances import Resistances
 from src.helpers import Helpers
@@ -20,6 +19,5 @@ bot.add_cog(Helpers(bot))
 bot.add_cog(CharTools(bot))
 
 
-keepalive.keep_alive()
 token = os.environ.get("DISCORD_TOKEN") 
 bot.run(token)
