@@ -10,7 +10,7 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 
 ENV PATH="/home/bot/.poetry/bin:${PATH}"
 
-WORKDIR /opt/scum-n-villainy/
+WORKDIR /opt/scum-and-villainy/
 
 COPY . ./
 
