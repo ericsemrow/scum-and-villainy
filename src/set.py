@@ -64,3 +64,4 @@ class SetRoll():
       embed.set_footer(text = self.fillStr(self.fields.footer))
     
     return embed
+

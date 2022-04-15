@@ -93,8 +93,9 @@ class Helpers(commands.Cog):
 
   @roll.error
   @set.error
+  @setup.error
+  @botvoice.error
+  @npc.error
   async def handle_bot_exceptions(self, ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-      await ctx.send("This bot seems to be missing the required permissions.")
-    if isinstance(error, commands.CommandInvokeError):
-      await ctx.send("This bot seems to be missing the required permission.")
+    bugsnag.notify(error)
+    await ctx.send( str(error) )

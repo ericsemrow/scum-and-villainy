@@ -41,7 +41,11 @@ class Resistances(UsesDice, commands.Cog):
     self.num_die = args[0] if len(args) else self.attrRatingFromSheet(ctx, ctx.command.name.lower())
     self.description = self.resistance_data[ctx.command.name.lower()]["desc"]
 
-    await ctx.message.delete()
+    try:
+      await ctx.message.delete()
+    except Exception as e:
+      await ctx.send( str(e) )
+
     await ctx.send(embed=self.getEmbed(ctx))
 
   def attrRatingFromSheet(self, ctx, attr):
@@ -76,9 +80,5 @@ class Resistances(UsesDice, commands.Cog):
   @prowess.error
   @resolve.error
   async def handle_bot_exceptions(self, ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-      await ctx.send("This bot seems to be missing the required permissions.")
-    if isinstance(error, commands.CommandInvokeError):
-      await ctx.send("This bot seems to be missing the required permission.")
-
-    raise error
+    bugsnag.notify(error)
+    await ctx.send( str(error) )

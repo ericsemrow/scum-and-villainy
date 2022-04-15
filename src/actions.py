@@ -1,4 +1,4 @@
-import os, json, argparse
+import os, json, argparse, bugsnag
 from discord.ext import commands
 from src.uses_dice import UsesDice
 from src.repositories.character_repository import CharacterRepository
@@ -44,7 +44,6 @@ class Actions(UsesDice, commands.Cog):
     return f"{str(result)}: {msg}"
   
   async def executeAction(self, ctx, args):
-
     try:
       parsed = parser.parse_args(args)
     except:
@@ -53,13 +52,14 @@ class Actions(UsesDice, commands.Cog):
     self.num_die = await self.skillFromSheet(ctx, ctx.command.name.lower())
 
     self.num_die += parsed.bonus
-    
+
     self.description = self.action_data[ctx.command.name.lower()]["desc"]
     try:
       await ctx.message.delete()
-      await ctx.send(embed=self.getEmbed(ctx))
-    except:
-      await ctx.send( "There seems to be an issue with your permissions.")
+    except Exception as e:
+      await ctx.send( str(e) )
+
+    await ctx.send(embed=self.getEmbed(ctx))
 
   async def skillFromSheet(self, ctx, skill):
     charRepo = CharacterRepository()
@@ -143,9 +143,18 @@ class Actions(UsesDice, commands.Cog):
     await self.executeAction(ctx, args)
 
 
+  @attune.error
+  @command.error
+  @consort.error
+  @doctor.error
+  @hack.error
+  @helm.error
+  @rig.error
+  @scramble.error
+  @scrap.error
+  @skulk.error
+  @study.error
+  @sway.error
   async def handle_bot_exceptions(self, ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-      await ctx.send("This bot seems to be missing the required permissions.")
-    if isinstance(error, commands.CommandInvokeError):
-      await ctx.send("This bot seems to be missing the required permission.")
-    raise error
+    bugsnag.notify(error)
+    await ctx.send( str(error) )

@@ -1,28 +1,13 @@
 import os
-import bugsnag
 from src.actions import Actions
 from src.resistances import Resistances
 from src.helpers import Helpers
 from src.char_tools import CharTools
 
 from discord.ext import commands
+from src.log import Log
 
-bugsnag.configure(
-    api_key="8b60d1890a58f9fcc3dc8627809a361a",
-    project_root="/opt/scum-and-villainy/",
-)
-
-import logging
-
-from bugsnag.handlers import BugsnagHandler
-
-# ... (call bugsnag.configure() here)
-logger = logging.getLogger("scum")
-handler = BugsnagHandler()
-# send only ERROR-level logs and above
-handler.setLevel(logging.ERROR)
-logger.addHandler(handler)
-
+logger = Log()
 
 bot = commands.Bot(command_prefix='!')
 

@@ -97,8 +97,11 @@ class CharTools(commands.Cog, UsesDice):
     await ctx.send("No sheet loaded. Have you used `!sheet <url>`?")
 
   @sheet.error
+  @update.error
+  @gsheet.error
+  @char.error
+  @stress.error
+  @xp.error
   async def handle_bot_exceptions(self, ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-      await ctx.send("This bot seems to be missing the required permissions.")
-    if isinstance(error, commands.CommandInvokeError):
-      await ctx.send("This bot seems to be missing the required permission.")
+      bugsnag.notify(error)
+      await ctx.send( str(error) )
