@@ -22,7 +22,7 @@ spec:
         resources:
           requests:
             memory: "96Mi"
-            cpu: "25m"
+            cpu: "5m"
         envFrom:
         - secretRef:
             name: scum-and-villainy-secrets
